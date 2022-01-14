@@ -1,6 +1,4 @@
-# flatten nested lists
-def flatten(t):
-    return [item for sublist in t for item in sublist]
+from utils import constants, global_func
 
 class Svara:
     """Defines a representation for a svara"""
@@ -12,11 +10,11 @@ class Svara:
 
     # identifies the svara kind
     def idKind(self, svara):
-        if svara in ['a', 'i', 'u']:
+        if svara in constants.BASIC_SVARA:
             return 'basic'
-        elif svara in ['A', 'I', 'U']:
+        elif svara in constants.LONG_SVARA:
             return 'long'
-        elif svara in ['e', 'ai', 'o', 'au']:
+        elif svara in constants.COMPOUND_SVARA:
             return 'compound'
         else: # Invalid svara
             return None
@@ -29,11 +27,11 @@ class Svara:
             if svara == 'e':
                 return ['a','i']
             elif svara == 'ai':
-                return flatten([self.decompose('e', 'compound')])
+                return global_func.flatten([self.decompose('e', 'compound')])
             elif svara == 'o':
                 return ['a', 'u']
             else: # au
-                return flatten(['a', self.decompose('o', 'compound')])
+                return global_func.flatten(['a', self.decompose('o', 'compound')])
         elif kind == 'basic': # a, i, u
             return [svara]
         else: # Invalid svara
