@@ -7,4 +7,4 @@ A python model of the Sanskrit language.
 
 ### Vyakarana (Grammar)
 1. Decompose a Svara (Vowel)
-`python3 src/main.py`
+`python3 src`
