@@ -1,16 +1,20 @@
 import argparse
 
-from vyakarana import svara
+from vyakarana import svara, alpha
 
 parser = argparse.ArgumentParser(description='Process Sanksrit Grammar')
-parser.add_argument('-pp', '--pretty', action='store_true', help='pretty print svara details')
-parser.add_argument('svara', nargs='+', help='svara')
+parser.add_argument('-pp', '--pretty', action='store_true', help='pretty print alphabet details')
+parser.add_argument('alphabet', nargs='+', help='alphabet to parse')
 args = parser.parse_args()
 
-sv = []
-for s in args.svara:
-    sv.append(svara.Svara(s))
+alphas = []
+for a in args.alphabet:
+    s = svara.Svara(a)
+    if s.kind == None:
+        alphas.append(alpha.Alpha(a))
+    else:
+        alphas.append(svara.Svara(a))
 
 if args.pretty:
-    for s in sv:
-        s.display()
+    for a in alphas:
+        a.display()

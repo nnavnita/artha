@@ -6,7 +6,7 @@ A python model of the Sanskrit language.
 ## Abilities:
 
 ### Vyakarana (Grammar)
-1. Decompose a Svara (Vowel)
+1. Decompose a Svara (alphabet)
 ```
 python3 src au # svara processed but no output
 python3 src au -pp # svara processed with prettified output
@@ -26,4 +26,17 @@ python3 src A I U -pp # multiple svara processed with prettified output
     Svara: U
     Kind: long
     Breakdown: ['u', 'u']
+```
+2. Discover alphabet type
+```
+navnita@Navnitas-MacBook-Pro artha % python3 src -pp au kh aM
+    Svara: au
+    Kind: compound
+    Breakdown: ['a', 'a', 'u']
+
+    Alphabet: kh
+    Kind: consonant
+
+    Alphabet: aM
+    Kind: anusvara
 ```

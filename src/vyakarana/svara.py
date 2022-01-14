@@ -10,10 +10,10 @@ class Svara:
 
     # identifies the svara kind
     def idKind(self, svara):
-        if svara in constants.BASIC_SVARA:
-            return 'basic'
-        elif svara in constants.LONG_SVARA:
-            return 'long'
+        if svara in constants.HRASVA_SVARA:
+            return 'hrasva'
+        elif svara in constants.DIRGHA_SVARA:
+            return 'dirgha'
         elif svara in constants.COMPOUND_SVARA:
             return 'compound'
         else: # Invalid svara
@@ -21,7 +21,7 @@ class Svara:
 
     # provides a breakdown ("decomposition") of the svara based on its kind
     def decompose(self, svara, kind):
-        if kind == 'long': # A, I, U
+        if kind == 'dirgha': # A, I, U
             return [svara.lower()]*2
         elif kind == 'compound':
             if svara == 'e':
@@ -32,7 +32,7 @@ class Svara:
                 return ['a', 'u']
             else: # au
                 return global_func.flatten(['a', self.decompose('o', 'compound')])
-        elif kind == 'basic': # a, i, u
+        elif kind == 'hrasva': # a, i, u
             return [svara]
         else: # Invalid svara
             return None
